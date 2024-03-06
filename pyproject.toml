@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "unipd-cdev"
+version = "0.1.0"
+description = "CLI interface to run a C development environment through docker."
+authors = ["Matteo Spanio <spanio@dei.unipd.it>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "unipd_cdev"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.scripts]
+unipd-cdev = "unipd_cdev.__main__:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
