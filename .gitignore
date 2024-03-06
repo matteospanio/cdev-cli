@@ -1,0 +1,9 @@
+.vscode
+!/.github/
+!.gitignore
+*.egg-info
+*.mo
+*.pyc
+build/
+dist/
+__pycache__/
