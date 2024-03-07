@@ -70,13 +70,13 @@ install: ## install the package to the active Python's site-packages
 .PHONY: format
 format: ## format code
 	@echo "Format docstrings"
-	@$(POETRY) docformatter --config ./pyproject.toml --recursive --in-place ./unipd_cdev ./tests
+	@$(POETRY) docformatter --config ./pyproject.toml --recursive --in-place ./cdev_cli ./tests
 	@echo "Format code with black"
 	@$(POETRY) black .
 
 .PHONY: lint
 lint: ## check style with pylint
-	$(POETRY) ruff check ./unipd_cdev ./tests --output-format=full
+	$(POETRY) ruff check ./cdev_cli ./tests --output-format=full
 
 .PHONY: update
 update: ## update dependencies

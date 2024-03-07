@@ -1,17 +1,17 @@
 [tool.poetry]
-name = "unipd-cdev"
+name = "cdev-cli"
 version = "0.1.0"
 description = "CLI interface to run a C development environment through docker."
 authors = ["Matteo Spanio <spanio@dei.unipd.it>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "unipd_cdev"}]
+packages = [{include = "cdev_cli"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 
 [tool.poetry.scripts]
-unipd-cdev = "unipd_cdev.__main__:main"
+cdev-cli = "cdev_cli.__main__:main"
 
 [tool.poetry.group.dev.dependencies]
 docformatter = "^1.7.5"
@@ -29,7 +29,7 @@ blank = true
 
 [tool.ruff]
 line-length = 88
-src = ["unipd_cdev", "tests"]
+src = ["cdev_cli", "tests"]
 extend-exclude = ["docs"]
 target-version = "py38"
 

@@ -8,8 +8,8 @@ from argparse import ArgumentParser, HelpFormatter
 from pathlib import Path
 from typing import NoReturn
 
-from unipd_cdev import lib
-from unipd_cdev.lib import DockerStatus
+from cdev_cli import lib
+from cdev_cli.lib import DockerStatus
 
 
 class CapitalizedHelpFormatter(HelpFormatter):
@@ -70,7 +70,7 @@ def init_parser(parser: ArgumentParser) -> ArgumentParser:
 def main() -> NoReturn:
     """Entrypoint of the program."""
     parser = ArgumentParser(
-        prog="unipd-cdev",
+        prog="cdev-cli",
         description="CLI interface to run a C development environment through docker.",
         formatter_class=CapitalizedHelpFormatter,
         epilog="This program is distributed under the MIT License.",
@@ -91,7 +91,7 @@ def main() -> NoReturn:
         sys.exit(os.EX_USAGE if sys.platform != "win32" else 1)
 
     command = ["docker", "run"]
-    options = ["-v", f"{folder}:/mnt/", "-it", "--rm", f"matteospanio/corso-c:{tag}"]
+    options = ["-v", f"{folder}:/mnt/", "-it", "--rm", f"matteospanio/cdev:{tag}"]
     args = ["bash"]
 
     process = list(itertools.chain(command, options, args))
