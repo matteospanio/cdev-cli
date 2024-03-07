@@ -20,7 +20,7 @@ RUN mkdir -p /home/cdev/.config/nvim
 
 COPY .vimrc /home/cdev/.vimrc
 
-COPY init.vim /home/cdev/.config/nvim/init.vim
+COPY init.lua /home/cdev/.config/nvim/init.lua
 
 USER cdev
 
