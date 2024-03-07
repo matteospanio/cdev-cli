@@ -54,7 +54,7 @@ def init_parser(parser: ArgumentParser) -> ArgumentParser:
         "-t",
         "--tag",
         nargs="?",
-        help="start matteospanio/corso-c:TAG, else matteospanio/corso-c:latest",
+        help="start matteospanio/cdev:TAG, else matteospanio/cdev:latest",
         default="latest",
     )
     parser.add_argument(
