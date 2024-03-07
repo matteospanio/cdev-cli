@@ -3,9 +3,24 @@ name = "cdev-cli"
 version = "0.1.0"
 description = "CLI interface to run a C development environment through docker."
 authors = ["Matteo Spanio <spanio@dei.unipd.it>"]
+repository = "https://github.com/matteospanio/cdev-cli"
+keywords = ["cdev", "cli", "docker", "unipd", "teaching"]
 license = "MIT"
 readme = "README.md"
 packages = [{include = "cdev_cli"}]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
