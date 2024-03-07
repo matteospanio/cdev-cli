@@ -76,7 +76,7 @@ format: ## format code
 
 .PHONY: lint
 lint: ## check style with pylint
-	$(POETRY) ruff check ./unipd_cdev ./tests --show-source
+	$(POETRY) ruff check ./unipd_cdev ./tests --output-format=full
 
 .PHONY: update
 update: ## update dependencies

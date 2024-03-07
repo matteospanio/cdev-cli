@@ -1,7 +1,8 @@
-from enum import Enum
+"""Common functions for the unipd_cdev package."""
+
 import shutil
 import subprocess
-
+from enum import Enum
 
 STATUS_MSG = {
     "RUNNING": "",
@@ -13,6 +14,8 @@ STATUS_MSG = {
 
 
 class DockerStatus(str, Enum):
+    """Enum class to represent the status of the docker daemon."""
+
     RUNNING = "RUNNING"
     NOT_FOUND = "NOT_FOUND"
     NOT_RESPONDING = "NOT_RESPONDING"
@@ -20,15 +23,25 @@ class DockerStatus(str, Enum):
 
 
 def get_docker_status() -> DockerStatus:
+    """Check the status of the docker daemon.
+
+    Returns
+    -------
+    DockerStatus
+        The status of the docker daemon.
+
+    """
     if not shutil.which("docker"):
         return DockerStatus.NOT_FOUND
 
     try:
-        _ = subprocess.check_call(
-            ["docker", "info"],
+        process = ["docker", "info"]
+        subprocess.check_call(
+            process,
             stderr=subprocess.DEVNULL,
             stdout=subprocess.DEVNULL,
             timeout=10,
+            shell=False,  # noqa: S603
         )
         return DockerStatus.RUNNING
     except subprocess.CalledProcessError:

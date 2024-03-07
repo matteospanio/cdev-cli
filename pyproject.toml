@@ -31,6 +31,9 @@ blank = true
 line-length = 88
 src = ["unipd_cdev", "tests"]
 extend-exclude = ["docs"]
+target-version = "py38"
+
+[tool.ruff.lint]
 select =[
     "A",    # builtins
     "B",    # bugbear
@@ -57,17 +60,16 @@ select =[
     "W",    # pycodestyle warning
 ]
 fixable = ["ALL"]
-target-version = "py38"
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "numpy"
 ignore-decorators = ["typing.overload"]
 
-[tool.ruff.pylint]
+[tool.ruff.lint.pylint]
 max-args = 6
 max-returns = 5
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "tests/*.py" = ["D", "RUF", "S", "A", "PLR6301", "PLR2004"]
 
 [tool.black]
