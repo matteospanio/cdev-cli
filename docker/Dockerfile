@@ -14,6 +14,14 @@ RUN usermod -aG sudo cdev
 
 RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+RUN mkdir -p /home/cdev/.config/nvim
+
+RUN echo "set runtimepath^=~/.vim runtimepath+=~/.vim/after \
+let &packpath=&runtimepath \
+source ~/.vimrc" > /home/cdev/.config/nvim/init.vim
+
+COPY .vimrc /home/cdev/.vimrc
+
 USER cdev
 
 ENV TERM=xterm-256color

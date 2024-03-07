@@ -1,5 +1,6 @@
 from argparse import ArgumentParser, HelpFormatter
 from pathlib import Path
+import itertools
 import os
 import subprocess
 import sys
@@ -58,7 +59,7 @@ def main() -> NoReturn:
     docker_status = lib.get_docker_status()
     print(lib.STATUS_MSG[docker_status])
     if docker_status != DockerStatus.RUNNING:
-        sys.exit(os.EX_UNAVAILABLE)
+        sys.exit(os.EX_UNAVAILABLE if sys.platform != "win32" else 1)
 
     folder: Path = args.folder
     tag: str = args.tag
@@ -67,20 +68,12 @@ def main() -> NoReturn:
         print(f"{folder} does not exist or is not a folder.")
         sys.exit(os.EX_USAGE)
 
-    print(folder)
+    command = ["docker", "run"]
+    options = ["-v", f"{folder}:/mnt/", "-it", "--rm", f"matteospanio/corso-c:{tag}"]
+    args = ["bash"]
 
-    subprocess.run(
-        [
-            "docker",
-            "run",
-            "-v",
-            f"{folder}:/mnt/",
-            "-it",
-            "--rm",
-            f"matteospanio/corso-c:{tag}",
-            "bash",
-        ]
-    )
+    process = list(itertools.chain(command, options, args))
+    subprocess.run(process)
 
     sys.exit(os.EX_OK)
 
