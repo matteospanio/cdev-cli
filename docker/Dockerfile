@@ -8,6 +8,8 @@ RUN apt-get update && apt-get install -y sudo python3 python3-pip \
 
 RUN apt-get install -y curl wget gdb valgrind
 
+RUN pip install pipx
+
 RUN adduser --disabled-password --gecos '' cdev
 
 RUN usermod -aG sudo cdev
@@ -16,19 +18,15 @@ RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 RUN mkdir -p /home/cdev/.config/nvim
 
-RUN echo "set runtimepath^=~/.vim runtimepath+=~/.vim/after \
-let &packpath=&runtimepath \
-source ~/.vimrc" > /home/cdev/.config/nvim/init.vim
-
 COPY .vimrc /home/cdev/.vimrc
+
+COPY init.vim /home/cdev/.config/nvim/init.vim
 
 USER cdev
 
 ENV TERM=xterm-256color
 
 ENV PAGER="most"
-
-RUN pip install pipx
 
 RUN echo "export PATH=$PATH:/home/cdev/.local/bin" >> /home/cdev/.bashrc
 
