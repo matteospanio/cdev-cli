@@ -1,4 +1,4 @@
-"""Entrypoint module, in case you use `python -m unipd_cdev`."""
+"""Entrypoint module, in case you use `python -m cdev_cli`."""
 
 import itertools
 import os

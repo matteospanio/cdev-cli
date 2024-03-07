@@ -1,1 +1,1 @@
-"""The unipd_cdev package."""
+"""The cdev_cli package."""

@@ -1,4 +1,4 @@
-"""Common functions for the unipd_cdev package."""
+"""Common functions for the cdev_cli package."""
 
 import shutil
 import subprocess
