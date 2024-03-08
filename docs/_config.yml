@@ -1,6 +1,6 @@
 title: cdev-cli documentation
 description: A command-line script that facilitates using a docker container to learn C development.
-remote_theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs
 
 url: https://matteospanio.github.io/cdev-cli/
 
