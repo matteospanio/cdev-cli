@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "cdev-cli"
-version = "0.1.0"
+version = "0.1.1"
 description = "CLI interface to run a C development environment through docker."
 authors = ["Matteo Spanio <spanio@dei.unipd.it>"]
 repository = "https://github.com/matteospanio/cdev-cli"

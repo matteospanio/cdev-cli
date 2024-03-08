@@ -60,7 +60,7 @@ def init_parser(parser: ArgumentParser) -> ArgumentParser:
     parser.add_argument(
         "-V",
         "--version",
-        version="%(prog)s 0.1.0",
+        version="%(prog)s 0.1.1",
         action="version",
         help="show the version of the program.",
     )
@@ -85,13 +85,14 @@ def main() -> NoReturn:
 
     folder: Path = args.folder
     tag: str = args.tag
+    IMAGE: str = f"ghcr.io/matteospanio/cdev:{tag}"
 
     if not folder.exists() or not folder.is_dir():
         print(f"{folder} does not exist or is not a folder.")
         sys.exit(os.EX_USAGE if sys.platform != "win32" else 1)
 
     command = ["docker", "run"]
-    options = ["-v", f"{folder}:/mnt/", "-it", "--rm", f"matteospanio/cdev:{tag}"]
+    options = ["-v", f"{folder}:/mnt/", "-it", "--rm", IMAGE]
     args = ["bash"]
 
     process = list(itertools.chain(command, options, args))
